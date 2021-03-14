@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import User from "./components/User";
 
 function App(
 
@@ -32,6 +33,9 @@ function App(
         </div>
         <hr/>
         <Switch>
+          <Route path="/nosotros/:id">
+            <User />
+          </Route>
           <Route path="/" exact>
             <Home />
           </Route>

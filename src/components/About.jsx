@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 const About = () => {
 
@@ -11,9 +12,9 @@ const About = () => {
     }, [])
 
     const getAPI = async () => {    
-        const Data = await fetch('https://jsonplaceholder.typicode.com/users')
-        const Users = await Data.json()
-        setTeam(Users)
+        const Data = await fetch('https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations')
+        const Data_json = await Data.json()
+        setTeam(Data_json.civilizations)
     }
 
     return (
@@ -22,7 +23,11 @@ const About = () => {
             <ul>
                 {
                     team.map(item => (
-                        <li key={item.id}>{item.name} - {item.email}</li>
+                        <li key={item.id}>
+                            <Link to={`/nosotros/${item.id}`}>
+                                {item.name} - {item.army_type}
+                            </Link>
+                        </li>
                     ))
                 }
             </ul>
